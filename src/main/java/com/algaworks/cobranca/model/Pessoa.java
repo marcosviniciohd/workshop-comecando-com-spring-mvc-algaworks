@@ -2,12 +2,33 @@ package com.algaworks.cobranca.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
 public class Pessoa {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	
 	private String nome;
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
+	
 	private Integer idade;
+	
+	@Enumerated(EnumType.STRING)
 	private StatusPessoa status;
 	
 	
